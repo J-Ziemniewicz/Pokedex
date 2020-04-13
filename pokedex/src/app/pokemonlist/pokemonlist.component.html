@@ -1,1 +1,36 @@
-<p>pokemonlist works!</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Pokemon name</th>
+      <th>type</th>
+      <th>Picture</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let pokemon of pokemonList
+          | paginate
+            : {
+                id: 'pokemonPagination',
+                itemsPerPage: 20,
+                currentPage: page,
+                totalItems: totalRecords
+              }
+      "
+    >
+      <td>{{ pokemon.name }}</td>
+      <td>{{ pokemon.types[0].type.name }}</td>
+      <td><img src="{{ pokemon.sprites.front_default }}" alt="Pokemon" /></td>
+    </tr>
+  </tbody>
+</table>
+<app-pokemon *ngFor="let poke of pokemon"></app-pokemon>
+<div>
+  <pagination-controls
+    id="pokemonPagination"
+    maxSize="5"
+    firectionLinks="true"
+    (pageChange)="page = $event"
+  ></pagination-controls>
+</div>

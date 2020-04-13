@@ -8,9 +8,10 @@ import { LogobarComponent } from "./logobar/logobar.component";
 import { PokemonlistComponent } from "./pokemonlist/pokemonlist.component";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { NgxPaginationModule } from "ngx-pagination";
+import { PokemonComponent } from './pokemon/pokemon.component';
 
 @NgModule({
-  declarations: [AppComponent, LogobarComponent, PokemonlistComponent],
+  declarations: [AppComponent, LogobarComponent, PokemonlistComponent, PokemonComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
