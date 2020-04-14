@@ -10,14 +10,14 @@ import { PokemonComponent } from "../pokemon/pokemon.component";
   styleUrls: ["./pokemonlist.component.scss"],
 })
 export class PokemonlistComponent implements OnInit {
-  pokemonsName: string[];
+  // pokemonsName: string[];
   pokemonList: IPokemon[];
   totalRecords: number = 200;
   page: number = 1;
-  pokemon: PokemonComponent[] = [new PokemonComponent("testowyPokemon")];
+  download: boolean = false;
 
   constructor(private pokedexService: PokedexService) {
-    this.pokemonsName = [];
+    // this.pokemonsName = [];
     this.pokemonList = [];
   }
 
@@ -29,11 +29,10 @@ export class PokemonlistComponent implements OnInit {
       this.pokemonList.sort(function (obj1, obj2) {
         return obj1.id - obj2.id;
       });
+      this.download = true;
       console.log(this.pokemonList);
       this.totalRecords = this.pokemonList.length;
       console.log("PokemonList length: " + this.totalRecords);
     });
   }
-
-  getPokemonsNames() {}
 }
