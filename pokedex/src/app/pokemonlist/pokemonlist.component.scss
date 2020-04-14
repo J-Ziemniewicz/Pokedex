@@ -2,4 +2,69 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 100px 20px 100px;
+}
+
+.search-filter-container {
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input {
+  width: 543px;
+  height: 82px;
+  padding-inline-start: 15px;
+  font-size: 32px;
+  border-radius: 41px;
+  border: 2px solid #2a3170;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 2pt #ffdb50;
+  outline: 0;
+}
+
+.pagination-bar {
+  display: flex;
+  justify-content: center;
+}
+
+.pokemon-container-loading {
+  display: flex;
+  justify-content: center;
+}
+
+.pokemon-container-loading .pokemonBall {
+  display: inline-block;
+  width: 15rem;
+  height: 15rem;
+  -webkit-mask: url("../../assets/pokeball.svg") no-repeat 100% 100%;
+  mask: url("../../assets/pokeball.svg") no-repeat 100% 100%;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  background-color: #ddd;
+  margin: 4rem;
+  animation: 3s spin infinite cubic-bezier(0.24, -0.35, 0.04, 0.99);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(720deg);
+  }
+}
+
+@media (max-width: 400px) {
+  .search-input {
+    margin: 0 30px 0 30px;
+    width: 80vw;
+    height: 50px;
+    font-size: 25px;
+  }
 }

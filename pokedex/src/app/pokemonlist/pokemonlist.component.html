@@ -1,12 +1,23 @@
+<!-- Search and filter bar -->
+<div class="search-filter-container">
+  <input
+    type="text"
+    class="search-input"
+    placeholder="Search by name"
+    [(ngModel)]="searchTerm"
+  />
+</div>
+
+<!-- Pokemon list with pagination -->
 <ng-container *ngIf="download">
   <div class="pokemonList">
     <app-pokemon
       *ngFor="
-        let pokemon of pokemonList
+        let pokemon of filteredPokemonList
           | paginate
             : {
                 id: 'pokemonPagination',
-                itemsPerPage: 20,
+                itemsPerPage: 18,
                 currentPage: page,
                 totalItems: totalRecords
               }
@@ -14,12 +25,20 @@
       [pokemon]="pokemon"
     ></app-pokemon>
   </div>
-  <div>
+  <div class="pagination-bar">
     <pagination-controls
       id="pokemonPagination"
       maxSize="5"
       firectionLinks="true"
-      (pageChange)="page = $event"
-    ></pagination-controls>
+      (pageChange)="onPageChange($event)"
+      previousLabel=""
+      nextLabel=""
+    >
+    </pagination-controls>
+  </div>
+</ng-container>
+<ng-container *ngIf="!download">
+  <div class="pokemon-container-loading">
+    <div class="pokemonBall"></div>
   </div>
 </ng-container>

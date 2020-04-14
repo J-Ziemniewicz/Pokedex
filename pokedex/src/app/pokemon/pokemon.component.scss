@@ -1,0 +1,36 @@
+.pokemon-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0px 0px 20px 0px;
+  height: 220px;
+  width: 250px;
+}
+
+.pokemon-circle {
+  border-radius: 50%;
+  border: 6px solid;
+  height: 164px;
+  width: 164px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+}
+
+.pokemon-circle:hover {
+  transform: rotate(45deg) scale(0.9);
+}
+
+.pokemon-name {
+  margin: 8px 0px 0px 0px;
+  color: #2a3170;
+  font-size: 32px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-transform: uppercase;
+}
+
+img {
+  width: 120px;
+  transform: rotate(-45deg);
+}

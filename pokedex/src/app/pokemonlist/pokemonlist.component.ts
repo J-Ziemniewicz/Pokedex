@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PokedexService } from "src/app/_services/pokedex.service";
 import { IPokemon } from "../_interfaces/IPokemon";
-import { ViewChild } from "@angular/core";
-import { PokemonComponent } from "../pokemon/pokemon.component";
 
 @Component({
   selector: "app-pokemonlist",
@@ -10,14 +8,23 @@ import { PokemonComponent } from "../pokemon/pokemon.component";
   styleUrls: ["./pokemonlist.component.scss"],
 })
 export class PokemonlistComponent implements OnInit {
-  // pokemonsName: string[];
   pokemonList: IPokemon[];
+  filteredPokemonList: IPokemon[];
   totalRecords: number = 200;
   page: number = 1;
   download: boolean = false;
 
+  private _searchTerm: string;
+  get searchTerm(): string {
+    return this._searchTerm;
+  }
+
+  set searchTerm(filter: string) {
+    this._searchTerm = filter;
+    this.filteredPokemonList = this.filteredPokemon(filter);
+  }
+
   constructor(private pokedexService: PokedexService) {
-    // this.pokemonsName = [];
     this.pokemonList = [];
   }
 
@@ -34,5 +41,17 @@ export class PokemonlistComponent implements OnInit {
       this.totalRecords = this.pokemonList.length;
       console.log("PokemonList length: " + this.totalRecords);
     });
+    this.filteredPokemonList = this.pokemonList;
+  }
+
+  filteredPokemon(filterName: string) {
+    return this.pokemonList.filter(
+      (pokemon) => pokemon.name.indexOf(filterName.toLowerCase()) !== -1
+    );
+  }
+
+  onPageChange(page: number) {
+    this.page = page;
+    window.scroll({ top: 0, behavior: "smooth" });
   }
 }
