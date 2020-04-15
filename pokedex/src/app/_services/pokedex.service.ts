@@ -3,7 +3,6 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { Observable, from } from "rxjs";
 import { map, mergeMap, switchMap, toArray } from "rxjs/operators";
-import { IPokeAPI, Result } from "../_interfaces/IPokeApi";
 
 @Injectable({
   providedIn: "root",

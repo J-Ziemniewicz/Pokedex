@@ -32,6 +32,15 @@
   justify-content: center;
 }
 
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.ngx-pagination {
+  padding-left: 0px !important;
+}
+
 .pokemon-container-loading {
   display: flex;
   justify-content: center;
@@ -66,5 +75,8 @@
     width: 80vw;
     height: 50px;
     font-size: 25px;
+  }
+  .pagination-bar {
+    padding-right: 40px;
   }
 }

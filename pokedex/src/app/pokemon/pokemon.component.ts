@@ -1,7 +1,19 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { IPokemon } from "../_interfaces/IPokemon";
 import { delay, timeout } from "rxjs/operators";
-
+import { Router } from "@angular/router";
+// import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { PokemonDetailsComponent } from "../pokemon-details/pokemon-details.component";
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from "@angular/material/dialog";
+// import { ModalComponent } from "ngb-modal";
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 @Component({
   selector: "app-pokemon",
   templateUrl: "./pokemon.component.html",
@@ -9,14 +21,11 @@ import { delay, timeout } from "rxjs/operators";
 })
 export class PokemonComponent implements OnInit {
   @Input() pokemon: IPokemon;
+  animal: string;
+  name: string;
+  constructor(private dialog: MatDialog) {}
 
-  constructor() {}
-
-  ngOnInit(): void {
-    let res = this.getPokemonColor();
-    // console.log(res);
-    // document.getElementById(this.pokemon.name).style.borderColor = res[0];
-  }
+  ngOnInit(): void {}
 
   getPokemonColor() {
     let typeList = [];
@@ -95,5 +104,12 @@ export class PokemonComponent implements OnInit {
     } else colorList = [colorList[0], colorList[0], colorList[0], colorList[0]];
 
     return colorList.join(" ");
+  }
+
+  openPokemonDetailDialog(): void {
+    this.dialog.open(PokemonDetailsComponent, {
+      width: "250px",
+      data: this.pokemon,
+    });
   }
 }

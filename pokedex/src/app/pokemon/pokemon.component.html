@@ -1,5 +1,9 @@
 <div class="pokemon-container">
-  <div class="pokemon-circle" [ngStyle]="{ 'border-color': getPokemonColor() }">
+  <div
+    class="pokemon-circle"
+    (click)="openPokemonDetailDialog()"
+    [ngStyle]="{ 'border-color': getPokemonColor() }"
+  >
     <img src="{{ pokemon.sprites.front_default }}" alt="Pokemon" />
   </div>
   <p class="pokemon-name">{{ pokemon.name }}</p>

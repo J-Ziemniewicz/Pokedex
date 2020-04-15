@@ -22,6 +22,9 @@ export class PokemonlistComponent implements OnInit {
   set searchTerm(filter: string) {
     this._searchTerm = filter;
     this.filteredPokemonList = this.filteredPokemon(filter);
+    this.totalRecords = this.filteredPokemonList.length;
+    this.page = 1;
+    // console.log(this.totalRecords);
   }
 
   constructor(private pokedexService: PokedexService) {
