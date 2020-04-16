@@ -4,14 +4,18 @@ $color-darkblue: #2a3170;
 $color-white: #ffffff;
 $color-gray: #ddd;
 
+// Div radius
+$circle-radius: 50%;
+$search-radius: 41px;
+
 // Font size
 $font-size-big: 38px;
 $font-size-medium: 35px;
 $font-size-small: 30px;
 
 // Mobile font  size
-$font-size-medium: 25px;
+$font-size-mobile-medium: 25px;
+$font-size-mobile-small: 20px;
 
-// Div radius
-$circle-radius: 50%;
-$search-radius: 41px;
+// Max width of mobile device
+$screen-size-mobile: 412px;

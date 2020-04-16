@@ -15,6 +15,7 @@ export interface IStats {
 export class PokemonDetailsComponent implements OnInit {
   pokemonDetails: IPokemon;
   pokemonColors: string;
+  stats: IStats[];
 
   constructor(
     public dialogRef: MatDialogRef<PokemonDetailsComponent>,
@@ -23,9 +24,11 @@ export class PokemonDetailsComponent implements OnInit {
     this.pokemonDetails = data["pokemonDetails"];
     this.pokemonColors = data["pokemonColors"];
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sortStats();
+  }
 
-  onNoClick(): void {
+  closeDialog(): void {
     this.dialogRef.close();
   }
 
@@ -106,5 +109,46 @@ export class PokemonDetailsComponent implements OnInit {
       }
     }
     return color;
+  }
+
+  sortFunc(a, b) {
+    let sortingArr = [
+      "hp",
+      "speed",
+      "attack",
+      "special_attack",
+      "defense",
+      "special_defense",
+    ];
+    return sortingArr.indexOf(a.stat.name) - sortingArr.indexOf(b.stat.name);
+  }
+
+  sortStats() {
+    let tempStatArray = this.pokemonDetails.stats;
+    const sortingArr = [
+      "hp",
+      "speed",
+      "attack",
+
+      "special-defense",
+      "defense",
+      "special-attack",
+    ];
+
+    tempStatArray.sort((leftSide, rightSide): number => {
+      if (
+        sortingArr.indexOf(leftSide.stat.name) >
+        sortingArr.indexOf(rightSide.stat.name)
+      ) {
+        return 1;
+      }
+      if (
+        sortingArr.indexOf(leftSide.stat.name) <
+        sortingArr.indexOf(rightSide.stat.name)
+      ) {
+        return -1;
+      }
+      return 0;
+    });
   }
 }

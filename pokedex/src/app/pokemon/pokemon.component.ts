@@ -115,6 +115,7 @@ export class PokemonComponent implements OnInit {
     dialogConfig.position = {
       bottom: "3vh",
     };
+    dialogConfig.autoFocus = false;
     (dialogConfig.data = {
       pokemonDetails: this.pokemon,
       pokemonColors: this.pokemonColor,

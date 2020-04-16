@@ -76,7 +76,7 @@
 }
 
 // Mobile website setup
-@media (max-width: 400px) {
+@media (max-width: $screen-size-mobile) {
   .search-input {
     margin: 0 30px 0 30px;
     width: 80vw;
