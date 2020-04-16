@@ -24,7 +24,6 @@ export class PokemonlistComponent implements OnInit {
     this.filteredPokemonList = this.filteredPokemon(filter);
     this.totalRecords = this.filteredPokemonList.length;
     this.page = 1;
-    // console.log(this.totalRecords);
   }
 
   constructor(private pokedexService: PokedexService) {
@@ -36,13 +35,12 @@ export class PokemonlistComponent implements OnInit {
       res.forEach((pokemon: IPokemon) => {
         this.pokemonList.push(pokemon);
       });
-      this.pokemonList.sort(function (obj1, obj2) {
+      this.pokemonList.sort((obj1, obj2) => {
         return obj1.id - obj2.id;
       });
       this.download = true;
-      console.log(this.pokemonList);
+      // console.log(this.pokemonList);
       this.totalRecords = this.pokemonList.length;
-      console.log("PokemonList length: " + this.totalRecords);
     });
     this.filteredPokemonList = this.pokemonList;
   }

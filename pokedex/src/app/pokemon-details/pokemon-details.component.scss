@@ -1,0 +1,143 @@
+@import "../../global-styles/variables.scss";
+
+// Modal Container
+
+.pokemon-detail-container {
+  width: 580px;
+  height: 754px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.pokemon-detail-container * {
+  text-transform: uppercase;
+}
+
+// Top Container
+.top-container {
+  padding: 0px 40px 0px 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.pokemon-circle-detail {
+  margin: 0px;
+  border-radius: $circle-radius;
+  border: 6px solid;
+  height: 164px;
+  width: 164px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+}
+
+.pokemon-name-type-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 40px;
+}
+
+.type-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pokemon-type {
+  width: 121px;
+  height: 61px;
+  color: $color-white;
+  font-size: $font-size-medium;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 12px 0px 12px;
+}
+
+img {
+  width: 120px;
+  transform: rotate(-45deg);
+}
+
+.pokemon-name {
+  margin: 30px 0px 0px 0px;
+  color: $color-darkblue;
+  font-size: $font-size-medium;
+
+  text-transform: uppercase;
+}
+
+// Middle Container => Pokemon Stats
+.stats-container {
+  margin: 20px 70px 25px 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  margin: 10px 0 10px 0;
+}
+
+.stat * {
+  font-size: $font-size-big;
+}
+
+.stat-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: $circle-radius;
+  background-color: $color-darkblue;
+  height: 78px;
+  width: 78px;
+  color: $color-yellow;
+}
+
+.stat-name {
+  margin: 15px;
+  color: $color-darkblue;
+}
+
+// Bottom Container => Pokemon Details
+.bottom-container {
+  background-color: $color-yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 29px;
+  min-height: 180px;
+}
+
+.height-weight-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottom-container * {
+  font-size: $font-size-small;
+  color: $color-darkblue;
+}
+
+.bottom-stat {
+  margin: 12px;
+}
+
+.ability-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ability {
+  margin: 0 0 0 15px;
+}

@@ -1,7 +1,63 @@
-<h1 mat-dialog-title>Hi {{ pokemonDetails.name }}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
+<!-- Do porawienia -->
+
+<div class="pokemon-detail-container">
+  <div class="top-container">
+    <div
+      class="pokemon-circle-detail"
+      [ngStyle]="{ 'border-color': pokemonColors }"
+    >
+      <img src="{{ pokemonDetails.sprites.front_default }}" alt="Pokemon" />
+    </div>
+    <div class="pokemon-name-type-container">
+      <div class="type-container">
+        <div
+          *ngFor="let pokemonType of pokemonDetails.types"
+          class="pokemon-type"
+          [ngStyle]="{
+            'background-color': getTypeColor(pokemonType.type.name)
+          }"
+        >
+          {{ pokemonType.type.name }}
+        </div>
+      </div>
+      <p class="pokemon-name">{{ pokemonDetails.name }}</p>
+    </div>
+  </div>
+  <div class="stats-container">
+    <!-- <div class="half-status-container">
+      <div class="stat">
+        <div class="stat-circle">{{ pokemonDetails.stats. }}</div>
+        <p class="stat-name">{{ stat.stat.name }}</p>
+      </div>
+    </div> -->
+    <div class="stat" *ngFor="let stat of pokemonDetails.stats">
+      <div class="stat-circle">{{ stat.base_stat }}</div>
+      <ng-container *ngIf="stat.stat.name === 'special-defense'; else second"
+        ><p class="stat-name">sp atk</p></ng-container
+      >
+      <ng-template #second>
+        <ng-container *ngIf="stat.stat.name === 'special-attack'; else third"
+          ><p class="stat-name">sp def</p></ng-container
+        >
+      </ng-template>
+      <ng-template #third
+        ><p class="stat-name">{{ stat.stat.name }}</p></ng-template
+      >
+    </div>
+  </div>
+  <div class="bottom-container">
+    <div class="height-weight-container">
+      <p class="bottom-stat">Height: {{ pokemonDetails.height / 10 }}m</p>
+      <p class="bottom-stat">Weight: {{ pokemonDetails.weight / 10 }}kg</p>
+    </div>
+    <p class="bottom-stat">
+      Base experience: {{ pokemonDetails.base_experience }}
+    </p>
+    <div class="ability-container">
+      Abilities:
+      <div class="ability" *ngFor="let ability of pokemonDetails.abilities">
+        {{ ability.ability.name }},
+      </div>
+    </div>
+  </div>
 </div>

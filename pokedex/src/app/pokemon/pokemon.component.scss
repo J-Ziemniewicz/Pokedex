@@ -1,3 +1,5 @@
+@import "../../global-styles/variables.scss";
+
 .pokemon-container {
   display: flex;
   align-items: center;
@@ -8,7 +10,7 @@
 }
 
 .pokemon-circle {
-  border-radius: 50%;
+  border-radius: $circle-radius;
   border: 6px solid;
   height: 164px;
   width: 164px;
@@ -24,9 +26,8 @@
 
 .pokemon-name {
   margin: 8px 0px 0px 0px;
-  color: #2a3170;
-  font-size: 32px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: $color-darkblue;
+  font-size: $font-size-small;
   text-transform: uppercase;
 }
 

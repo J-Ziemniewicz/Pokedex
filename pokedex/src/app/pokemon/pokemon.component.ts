@@ -1,15 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { IPokemon } from "../_interfaces/IPokemon";
-import { delay, timeout } from "rxjs/operators";
-import { Router } from "@angular/router";
-// import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { PokemonDetailsComponent } from "../pokemon-details/pokemon-details.component";
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from "@angular/material/dialog";
-// import { ModalComponent } from "ngb-modal";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+
 export interface DialogData {
   animal: string;
   name: string;
@@ -21,15 +14,15 @@ export interface DialogData {
 })
 export class PokemonComponent implements OnInit {
   @Input() pokemon: IPokemon;
-  animal: string;
-  name: string;
+  pokemonColor: string;
   constructor(private dialog: MatDialog) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.pokemonColor = this.getPokemonColor();
+  }
 
   getPokemonColor() {
-    let typeList = [];
-    // console.log(this.pokemon.name);
+    const typeList = [];
     let colorList = [];
     this.pokemon.types.forEach((type) => {
       typeList.push(type.type);
@@ -46,6 +39,18 @@ export class PokemonComponent implements OnInit {
         }
         case "water": {
           colorList.push("#6890f0");
+          break;
+        }
+        case "flying": {
+          colorList.push("#A98FF3");
+          break;
+        }
+        case "dark": {
+          colorList.push("#705746");
+          break;
+        }
+        case "steel": {
+          colorList.push("#B7B7CE");
           break;
         }
         case "bug": {
@@ -98,7 +103,6 @@ export class PokemonComponent implements OnInit {
         }
       }
     }
-    // console.log(colorList);
     if (colorList.length == 2) {
       colorList = [colorList[0], colorList[0], colorList[1], colorList[1]];
     } else colorList = [colorList[0], colorList[0], colorList[0], colorList[0]];
@@ -107,9 +111,14 @@ export class PokemonComponent implements OnInit {
   }
 
   openPokemonDetailDialog(): void {
-    this.dialog.open(PokemonDetailsComponent, {
-      width: "250px",
-      data: this.pokemon,
-    });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.position = {
+      bottom: "3vh",
+    };
+    (dialogConfig.data = {
+      pokemonDetails: this.pokemon,
+      pokemonColors: this.pokemonColor,
+    }),
+      this.dialog.open(PokemonDetailsComponent, dialogConfig);
   }
 }

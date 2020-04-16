@@ -1,7 +1,9 @@
+@import "../../global-styles/variables.scss";
+
 .logoBar-container {
   height: 188px;
   width: 100vw;
-  background-color: #2a3170;
+  background-color: $color-darkblue;
   display: flex;
   justify-content: center;
   align-items: center;
