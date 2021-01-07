@@ -1,5 +1,5 @@
 # Pokedex
-Recruitment Tasks for Allegro Front-End Software Internship
+Fun front-end app in `Angular` to test PokeAPI
 
 ## Descritpion
 Application fetch 200 pokemons from [PokeAPI](https://pokeapi.co). Pokedex implement client-side pagination with 20 elements per page.
